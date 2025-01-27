@@ -1,8 +1,10 @@
 import React from 'react';
 import { useFonts } from 'expo-font';
-import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Button, Image, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Index() {
+  const navigation = useNavigation();
   // ===========================================================================
   // ================================== FONTS ==================================
   // ===========================================================================
@@ -52,7 +54,10 @@ export default function Index() {
       </View>
 
       {/* Text */}
-      
+      <View style={styles.informationContainer}>
+        <Text style={styles.welcomeText}>Welcome to Fabrication</Text>
+        <Button title='Get Started' onPress={() => navigation.navigate('category')}/>
+      </View>
     </View>
   );
 }
@@ -84,10 +89,16 @@ const styles = StyleSheet.create({
     left: 0,
   },
 
-  text: {
-    fontSize: 24,
-    fontFamily: 'Montserrat-Bold',
-    color: '#333',
-    marginTop: 20,
+  informationContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 0,
+  },
+
+  welcomeText: {
+    fontFamily: 'Fascinate-Regular',
+    fontSize: 45,
+    textTransform: 'uppercase',
   },
 });
